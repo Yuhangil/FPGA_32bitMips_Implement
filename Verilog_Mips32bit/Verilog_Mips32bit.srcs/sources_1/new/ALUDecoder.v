@@ -1,22 +1,14 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: Hanyang Univercity
+// Engineer: Hangil Yu
 // 
-// Create Date: 2023/07/01 21:44:56
-// Design Name: 
+// Create Date: 2023/07/01 21:44:37
+// Design Name: 32bit Mips ALUDecoder
 // Module Name: ALUDecoder
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
+// Project Name: 32Bit Multicycle Mips Implementation
+// Target Devices: Zybo Z7-20
 // Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
 //////////////////////////////////////////////////////////////////////////////////
 
 

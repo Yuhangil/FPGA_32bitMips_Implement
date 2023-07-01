@@ -1,23 +1,16 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: Hanyang Univercity
+// Engineer: Hangil Yu
 // 
-// Create Date: 2023/07/01 21:41:33
-// Design Name: 
-// Module Name: ALU32bit
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
+// Create Date: 2023/07/01 21:44:37
+// Design Name: 32bit Mips ALU
+// Module Name: 32bit Mips ALU
+// Project Name: 32Bit Multicycle Mips Implementation
+// Target Devices: Zybo Z7-20
 // Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
 //////////////////////////////////////////////////////////////////////////////////
+
 
 
 module ALU32bit(

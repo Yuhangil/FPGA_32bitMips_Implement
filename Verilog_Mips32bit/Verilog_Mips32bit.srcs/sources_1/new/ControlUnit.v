@@ -1,3 +1,17 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: Hanyang Univercity
+// Engineer: Hangil Yu
+// 
+// Create Date: 2023/07/01 21:44:37
+// Design Name: 32bit Mips Control Unit
+// Module Name: Control Unit
+// Project Name: 32Bit Multicycle Mips Implementation
+// Target Devices: Zybo Z7-20
+// Description: 
+//////////////////////////////////////////////////////////////////////////////////
+
+
 module ControlUnit(
     input clk,
     input reset_n,

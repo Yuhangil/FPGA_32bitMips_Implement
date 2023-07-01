@@ -1,22 +1,14 @@
 `timescale 1ns / 1ps
 //////////////////////////////////////////////////////////////////////////////////
-// Company: 
-// Engineer: 
+// Company: Hanyang Univercity
+// Engineer: Hangil Yu
 // 
-// Create Date: 2023/07/01 22:34:41
-// Design Name: 
-// Module Name: Instr_DataRam
-// Project Name: 
-// Target Devices: 
-// Tool Versions: 
+// Create Date: 2023/07/01 21:44:37
+// Design Name: 32bit Mips Instruction_Data_Ram
+// Module Name: MInstr_DataRam
+// Project Name: 32Bit Multicycle Mips Implementation
+// Target Devices: Zybo Z7-20
 // Description: 
-// 
-// Dependencies: 
-// 
-// Revision:
-// Revision 0.01 - File Created
-// Additional Comments:
-// 
 //////////////////////////////////////////////////////////////////////////////////
 
 
