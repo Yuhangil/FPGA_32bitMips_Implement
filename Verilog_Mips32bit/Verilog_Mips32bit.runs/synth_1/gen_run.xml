@@ -1,26 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1688235747" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/MipsProcessor.dcp">
-  <File Type="PA-TCL" Name="RegisterFile.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="RegisterFile_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="RegisterFile_reports.tcl"/>
-  <File Type="RDS-RDS" Name="RegisterFile.vds"/>
-  <File Type="RDS-UTIL" Name="RegisterFile_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="RegisterFile_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="RegisterFile.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="RegisterFile_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="RegisterFile_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1688337246" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/MipsProcessor.dcp">
+  <File Type="PA-TCL" Name="MipsProcessor.tcl"/>
+  <File Type="RDS-PROPCONSTRS" Name="MipsProcessor_drc_synth.rpt"/>
+  <File Type="REPORTS-TCL" Name="MipsProcessor_reports.tcl"/>
+  <File Type="RDS-RDS" Name="MipsProcessor.vds"/>
+  <File Type="RDS-UTIL" Name="MipsProcessor_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="MipsProcessor_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="MipsProcessor.dcp"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="MipsProcessor_timing_summary_synth.rpt"/>
+  <File Type="VDS-TIMING-PB" Name="MipsProcessor_timing_summary_synth.pb"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
-    <File Path="$PSRCDIR/sources_1/new/RegisterFile.v">
-      <FileInfo>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/ALU32bit.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -28,7 +20,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/ALUDecoder.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -36,7 +27,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/ControlUnit.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -44,7 +34,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/Instr_DataRam.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -52,7 +41,13 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/MainController.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/RegisterFile.v">
+      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -60,7 +55,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/MipsProcessor.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -68,7 +62,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="RegisterFile"/>
+      <Option Name="TopModule" Val="MipsProcessor"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

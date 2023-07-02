@@ -12,16 +12,30 @@
 //////////////////////////////////////////////////////////////////////////////////
 
 
-module Instr_DataRam(
+module Instr_DataRam#(
+    parameter DWIDTH = 32,
+    parameter MEM_SIZE = 3840
+)
+(
     input clk,
-    input reset_n,
     
     input WriteEnable,
     
     input [31:0] iAddr,
     input [31:0] iWriteData,
     
-    output [31:0] oReadData
-    
+    output reg [31:0] oReadData
     );
+    
+    (* ram_style = "block"*) reg [DWIDTH-1:0] ram [0:MEM_SIZE-1];
+    
+    always@(posedge clk) begin
+        if(WriteEnable) begin
+            ram[iAddr] <= iWriteData;
+        end else begin
+            oReadData <= ram[iAddr];
+        end
+    end
+    
+    
 endmodule

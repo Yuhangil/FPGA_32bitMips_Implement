@@ -33,15 +33,13 @@ module RegisterFile(
             for(i=0;i<32;i=i+1) begin
                 Registers[i] = 32'h0;
             end
+        end else begin
+            if(WriteEnable) begin
+                Registers[iRegAddrC] <= iWriteData;
+            end
         end
     end
-    
-    always@(posedge clk) begin
-        if(WriteEnable) begin
-            Registers[iRegAddrC] <= iWriteData;
-        end
-    end
-    
+
     always@(posedge clk) begin
         oReadDataA <= Registers[iRegAddrA];
         oReadDataB <= Registers[iRegAddrB];

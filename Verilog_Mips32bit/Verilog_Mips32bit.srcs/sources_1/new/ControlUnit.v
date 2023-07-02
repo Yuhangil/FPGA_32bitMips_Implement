@@ -34,4 +34,39 @@ module ControlUnit(
     output oMemToReg
     
     );
+    
+    wire [1:0] ALUOp;
+    
+    MainController#(
+    ) u_MainController(
+        .clk                    (clk),
+        .reset_n                (reset_n),
+        
+        .iOpcode                (iOpCode),
+    
+    // Multiplexer Selects
+        .oMemtoReg              (oMemToReg),
+        .oRegDst                (oRegDst),
+        .oIorD                  (oIorD),
+        .oPCSrc                 (oPCSrc),
+        .oALUSrcB               (oALUSrcB),
+        .oALUSrcA               (oALUSrcA),
+    // Register Enables
+        .oIRWrite               (oIRWrite),
+        .oMemWrite              (oMemWrite),
+        .oPCWrite               (oPCWrite),
+        .oBranch                (oBranch),
+        .oRegWrite              (oRegWrite),
+    
+        .oALUOp                 (ALUOp)   // To ALU Decoder
+    );
+    
+    ALUDecoder#(
+    ) u_ALUDecoder(
+        .iFunct                 (iFunct),
+        .iALUOp                 (ALUOp),
+    
+        .oALUControl            (oALUControl)
+    );
+    
 endmodule

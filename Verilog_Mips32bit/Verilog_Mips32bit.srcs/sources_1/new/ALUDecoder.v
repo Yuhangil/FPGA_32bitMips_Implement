@@ -18,4 +18,7 @@ module ALUDecoder(
     
     output [2:0] oALUControl
     );
+    
+    assign oALUControl = 3'h0;
+    
 endmodule

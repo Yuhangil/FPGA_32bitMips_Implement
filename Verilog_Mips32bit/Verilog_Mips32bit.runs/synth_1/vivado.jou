@@ -2,12 +2,12 @@
 # Vivado v2022.1 (64-bit)
 # SW Build 3526262 on Mon Apr 18 15:48:16 MDT 2022
 # IP Build 3524634 on Mon Apr 18 20:55:01 MDT 2022
-# Start of session at: Sun Jul  2 03:22:29 2023
-# Process ID: 15804
+# Start of session at: Mon Jul  3 07:34:08 2023
+# Process ID: 10640
 # Current directory: C:/Data/Vivado/Verilog_Mips32bit/Verilog_Mips32bit/Verilog_Mips32bit.runs/synth_1
-# Command line: vivado.exe -log RegisterFile.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source RegisterFile.tcl
-# Log file: C:/Data/Vivado/Verilog_Mips32bit/Verilog_Mips32bit/Verilog_Mips32bit.runs/synth_1/RegisterFile.vds
+# Command line: vivado.exe -log MipsProcessor.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source MipsProcessor.tcl
+# Log file: C:/Data/Vivado/Verilog_Mips32bit/Verilog_Mips32bit/Verilog_Mips32bit.runs/synth_1/MipsProcessor.vds
 # Journal file: C:/Data/Vivado/Verilog_Mips32bit/Verilog_Mips32bit/Verilog_Mips32bit.runs/synth_1\vivado.jou
 # Running On: DESKTOP-1GS9U83, OS: Windows, CPU Frequency: 3693 MHz, CPU Physical cores: 12, Host memory: 34279 MB
 #-----------------------------------------------------------
-source RegisterFile.tcl -notrace
+source MipsProcessor.tcl -notrace

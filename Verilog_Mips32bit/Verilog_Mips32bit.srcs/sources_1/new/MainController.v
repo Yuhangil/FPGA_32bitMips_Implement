@@ -28,16 +28,12 @@ module MainController(
     // Register Enables
     output oIRWrite,
     output oMemWrite,
-    output OPCWrite,
+    output oPCWrite,
     output oBranch,
     output oRegWrite,
     
     output [1:0] oALUOp   // To ALU Decoder
     );
-    
-    reg [3:0] c_state;
-    reg [3:0] n_state;
-    reg [5:0] Opcode_Capture;
     
     localparam S_Fetch = 4'b0000;
     localparam S_Decode = 4'b0001;
@@ -52,12 +48,18 @@ module MainController(
     localparam S_ADDIWriteBack = 4'b1010;
     localparam S_Jump = 4'b1011;
     
-    wire is_Rtype;  // Rtype = ADD, ADDU, AND, NOR, OR, SLT, SLTU, SUB, SUBU, XOR, SLL, SLLV, SRA, SRAV, SRL, SRLV, DIV, DIVU, MFHI, MFLO, MTHI, MTLO, MULT, MULTU
-    wire is_Branch = (Opcode_Capture ==  2'b000100);    // BEQ
-    wire is_Immediate = (Opcode_Capture ==  2'b001000 | Opcode_Capture ==  2'b001001);  // ADDI, ADDIU
-    wire is_Jump = (Opcode_Capture ==  2'b000010); // J target
-    wire is_Load_Mem = (Opcode_Capture ==  2'b100000 | Opcode_Capture ==  2'b100100 | Opcode_Capture ==  2'b100001 | Opcode_Capture ==  2'b100101 | Opcode_Capture ==  2'b100011);  // LB, LBU, LH, LHU, LW
-    wire is_Store_Mem = (Opcode_Capture ==  2'b101000 | Opcode_Capture ==  2'b101001 | Opcode_Capture ==  2'b101011);   // SB, SH, SW
+    reg [3:0] c_state;
+    reg [3:0] n_state;
+    reg [5:0] Opcode_Capture;
+    
+
+    
+    wire is_Rtype = (Opcode_Capture == 6'b000000);  // Rtype = ADD, ADDU, AND, NOR, OR, SLT, SLTU, SUB, SUBU, XOR, SLL, SLLV, SRA, SRAV, SRL, SRLV, DIV, DIVU, MFHI, MFLO, MTHI, MTLO, MULT, MULTU
+    wire is_Branch = (Opcode_Capture ==  6'b000100);    // BEQ
+    wire is_Immediate = (Opcode_Capture ==  6'b001000 | Opcode_Capture ==  6'b001001);  // ADDI, ADDIU
+    wire is_Jump = (Opcode_Capture ==  6'b000010); // J target
+    wire is_Load_Mem = (Opcode_Capture ==  6'b100000 | Opcode_Capture ==  6'b100100 | Opcode_Capture ==  6'b100001 | Opcode_Capture ==  6'b100101 | Opcode_Capture ==  6'b100011);  // LB, LBU, LH, LHU, LW
+    wire is_Store_Mem = (Opcode_Capture ==  6'b101000 | Opcode_Capture ==  6'b101001 | Opcode_Capture ==  6'b101011);   // SB, SH, SW
     
     wire is_Memory = is_Load_Mem | is_Store_Mem;    // Load or Store
     
@@ -72,14 +74,13 @@ module MainController(
     
     assign oIRWrite = (c_state == S_MemRead | c_state == S_MemWrite);   // to Register Enables
     assign oMemWrite = (c_state == S_MemWrite);
-    assign OPCWrite = (c_state == S_Jump);
+    assign oPCWrite = (c_state == S_Jump);
     assign oBranch = (c_state == S_Branch);
     assign oRegWrite = (c_state == S_MemWriteBack | c_state == S_ALUWriteBack | c_state == S_ADDIWriteBack);
     
     always@(posedge clk or negedge reset_n) begin   // Switch to Next State
         if(!reset_n) begin
             c_state <= S_Fetch;
-            n_state <= S_Fetch;
         end else begin
             c_state <= n_state;
         end
@@ -133,6 +134,8 @@ module MainController(
             S_ADDIWriteBack:
                 n_state = S_Fetch;
             S_Jump:
+                n_state = S_Fetch;
+            default:
                 n_state = S_Fetch;
         endcase
     end
