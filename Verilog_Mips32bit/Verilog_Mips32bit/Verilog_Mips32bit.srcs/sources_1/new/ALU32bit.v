@@ -28,15 +28,26 @@ module ALU32bit(
     
     output [31:0] ALUOutput,
     output is_Zero,
-    output Cout
+    output is_Overflow
     );
-    wire [31:0] RealB = (ALUControl[2])? -B : B;
-    wire [31:0] AdderOutput = A + RealB;
-    
-    // wire Cout = ... add Calculate Carry
-    
+    wire [31:0] RealB = (ALUControl[2])? (~B+32'h1) : B;
+    wire [31:0] AdderOutput;
+    wire [31:0] Cout;
+    genvar i;
+    generate
+        for (i=0;i<32;i=i+1) begin : gen_adder
+            if(i == 0) begin
+                assign Cout[i] = RealB[i] & A[i];
+                assign AdderOutput[i] = RealB[i] ^ A[i];
+            end else begin
+                assign Cout[i] = ( RealB[i] & A[i] ) | (RealB[i] & Cout[i-1]) | (A[i] & Cout[i-1]);
+                assign AdderOutput[i] = RealB[i] ^ A[i] ^ Cout[i-1];
+            end
+        end
+    endgenerate
+    assign is_Overflow = Cout[31];
     
     assign is_Zero = (ALUOutput == 32'h0);
-    assign ALUOutput = (ALUControl[1]) ? ((ALUControl[0])? ({0, AdderOutput[30:0]}) : (AdderOutput)) : ((ALUControl[0])? (A | RealB) : (A & RealB));    //
+    assign ALUOutput = (ALUControl[1]) ? ((ALUControl[0])? ({31'h0, AdderOutput[31]}) : (AdderOutput)) : ((ALUControl[0])? (A | RealB) : (A & RealB));    // SLT, Add or Sub, Or, AND
     
 endmodule

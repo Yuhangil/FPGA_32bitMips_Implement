@@ -1,14 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1688318639" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/MipsProcessor.dcp">
-  <File Type="PA-TCL" Name="ALU32bit.tcl"/>
-  <File Type="RDS-PROPCONSTRS" Name="ALU32bit_drc_synth.rpt"/>
-  <File Type="REPORTS-TCL" Name="ALU32bit_reports.tcl"/>
-  <File Type="RDS-RDS" Name="ALU32bit.vds"/>
-  <File Type="RDS-UTIL" Name="ALU32bit_utilization_synth.rpt"/>
-  <File Type="RDS-UTIL-PB" Name="ALU32bit_utilization_synth.pb"/>
-  <File Type="RDS-DCP" Name="ALU32bit.dcp"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="ALU32bit_timing_summary_synth.rpt"/>
-  <File Type="VDS-TIMING-PB" Name="ALU32bit_timing_summary_synth.pb"/>
+<GenRun Id="synth_1" LaunchPart="xc7z020clg400-1" LaunchTime="1688595195" LaunchIncrCheckpoint="$PSRCDIR/utils_1/imports/synth_1/MipsProcessor.dcp">
+  <File Type="PA-TCL" Name="MipsProcessor.tcl"/>
+  <File Type="REPORTS-TCL" Name="MipsProcessor_reports.tcl"/>
+  <File Type="RDS-RDS" Name="MipsProcessor.vds"/>
+  <File Type="RDS-UTIL" Name="MipsProcessor_utilization_synth.rpt"/>
+  <File Type="RDS-UTIL-PB" Name="MipsProcessor_utilization_synth.pb"/>
+  <File Type="RDS-DCP" Name="MipsProcessor.dcp"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/ALU32bit.v">
@@ -18,17 +15,8 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/RegisterFile.v">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="implementation"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/ALUDecoder.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -36,7 +24,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/ControlUnit.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -44,7 +31,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/Instr_DataRam.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -52,7 +38,13 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/MainController.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/RegisterFile.v">
+      <FileInfo>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -60,7 +52,6 @@
     </File>
     <File Path="$PSRCDIR/sources_1/new/MipsProcessor.v">
       <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="implementation"/>
         <Attr Name="UsedIn" Val="simulation"/>
@@ -68,12 +59,19 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="ALU32bit"/>
+      <Option Name="TopModule" Val="MipsProcessor"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">
     <Filter Type="Constrs"/>
+    <File Path="$PSRCDIR/constrs_1/new/Mips.xdc">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="implementation"/>
+      </FileInfo>
+    </File>
     <Config>
+      <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/new/Mips.xdc"/>
       <Option Name="ConstrsType" Val="XDC"/>
     </Config>
   </FileSet>
